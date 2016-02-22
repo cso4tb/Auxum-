@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
 	html5up.net | @n33co
@@ -51,19 +51,30 @@
 
 
 									<fieldset>
-	    								<legend>More information about our program will be set to your email address. </legend>
-	    								<br><br>
+	    								<legend>Fill out the fields below with your information. Each field must be completed correctly for successful submission. </legend>
+	    								<br>
 										<form method="post" action="form_action.php"> 
-
 										Name: <input type="text" name="name">
 										<span class="error"> <?php echo $nameErr;?></span>
-										<br><br>
+										<br>
 										E-mail:
 										<input type="text" name="email">
 										<span class="error"> <?php echo $emailErr;?></span>
-										<br><br>
+										<br>
+										Address: <input type="text" name="address">
+										<span class="error"> <?php echo $addressErr;?></span>
+										<br>
+										City: <input type="text" name="city">
+										<span class="error"> <?php echo $cityErr;?></span>
+										<br>
+										State:
+										<input type="text" name="state">
+										<br>
+										<span class="error"> <?php echo $stateErr;?></span>
+										Zip Code: <input type="text" name="zipcode">
+										<span class="error"> <?php echo $zipcodeErr;?></span>
+										<br>
 										<input type="submit" name="submit" value="Submit"> 
-
 										</form>
 									</fieldset>
 
@@ -86,7 +97,7 @@
 					<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Auxum. All rights reserved</li>
 							</ul>
 						</div>
 
