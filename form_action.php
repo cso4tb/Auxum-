@@ -51,14 +51,33 @@
 								$servername = "localhost";
 								$username = "root";
 								$password = "";
-																
-								$conn = new mysqli($servername, $username, $password);
+								$dbName = "Auxum";
 
-								
+								$conn = new mysqli($servername, $username, $password, $dbName);
 								if ($conn->connect_error) {
-								    echo "Connection Failed";
+								    die("Connection failed: " . $conn->connect_error);
 								} 
-								echo "Connected successfully";
+
+								$username = $_POST['name'];
+								$email = $_POST['email'];
+								$address = $_POST['address'];
+								$city = $_POST['city'];
+								$state = $_POST['state'];
+								$zip = $_POST['zipcode'];
+								$date = date("Y-m-d");
+
+								$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined)
+								VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date')";
+
+								if ($conn->query($sql) === TRUE) {
+								    echo "New record created successfully";
+								} else {
+								    echo "Error: " . $sql . "<br>" . $conn->error;
+								}
+
+
+
+								$conn->close();								
 							?>
 							
 
