@@ -48,19 +48,21 @@
 
 
 							<?php
-								$servername = "localhost";
-								$username = "root";
-								$password = "";
+							$servername = "localhost";
+							$username = "root";
+							$password = "";
 
-								// Create connection
-								echo "here"
-								$conn = new mysqli($servername, $username, $password);
+							// Create connection
+							$conn = mysqli_connect($servername, $username, $password);
+							echo "Made it";
 
-								// Check connection
-								/*if ($conn->connect_error) {
-								    echo "Connection Failed"
-								} 
-								echo "Connected successfully";*/
+							// Check connection
+							if (!$conn) {
+							    die("Connection failed: " . mysqli_connect_error());
+							}
+							echo "Connected successfully";
+
+
 							?>
 							
 
