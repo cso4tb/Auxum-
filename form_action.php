@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
 	html5up.net | @n33co
@@ -15,7 +15,6 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
-<<<<<<< HEAD
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -49,26 +48,51 @@
 
 
 							<?php
-							$servername = "localhost";
-							$username = "root";
-							$password = "";
+								$servername = "localhost";
+								$username = "root";
+								$password = "";
+																
+								$conn = new mysqli($servername, $username, $password);
 
-							// Create connection
-							$conn = mysqli_connect($servername, $username, $password);
-							echo "Made it";
-
-							// Check connection
-							if (!$conn) {
-							    die("Connection failed: " . mysqli_connect_error());
-							}
-							echo "Connected successfully";
-
-
-=======
-								<?php								
+								
+								if ($conn->connect_error) {
+								    echo "Connection Failed";
+								} 
 								echo "Connected successfully";
->>>>>>> origin/master
 							?>
-		
+							
+
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+
+						
+						</div>
+					</div>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Auxum. All rights reserved</li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
 	</body>
 </html>
