@@ -96,7 +96,7 @@
 									<fieldset>
 	    								<legend>Fill out the fields below with your information. Each field must be completed correctly for successful submission. </legend>
 	    								<br>
-	    								<p>Personal Information</p>
+	    								<h3>Personal Information</h3>
 										<form action="form_action.php" style="font-weight:bold;" method="POST" id="payment-form"> 
 											Name: <input type="text" style="font-weight:bold;" name="name" required="required" pattern="[A-Z]{1}[A-Za-z'-., ]{1,}" title="valid name must contain letters and may contain the characters from the following set: {' ,-.}">
 											<span class="error"> <?php echo $nameErr;?></span>
@@ -119,6 +119,7 @@
 											<span class="error"> <?php echo $zipcodeErr;?></span>
 											<br>
 											<span class="payment-errors"></span>
+											<h3> Payment Information </h3>
 											  <div class="form-row">
 											    <label>
 											      <span>Card Number</span>
@@ -131,16 +132,18 @@
 											      <input type="text" size="4" data-stripe="cvc"/>
 											    </label>
 											  </div>
-										    <div class="form-row">
+										    <div class="form-row" style="float:left;display:inline-block;">
 										      <label>
 										        <span>Expiration (MM/YYYY)</span>
-										        <input type="text" size="2" data-stripe="exp-month"/>
-										      </label>
+										      <input type="text" size="2" data-stripe="exp-month"/>
 										      <span> / </span>
 										      <input type="text" size="4" data-stripe="exp-year"/>
+										      </label>
 										    </div>
 											<br>
-											<input type="submit" name="submit" value="Submit"> 
+											<div class="submit-button" style="clear:left;">
+												<input type="submit" name="submit" value="Submit"> 
+											</div>
 										</form>
 									</fieldset>
 								</article>
