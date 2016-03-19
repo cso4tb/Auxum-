@@ -50,7 +50,7 @@
 		        $form.find('button').prop('disabled', true);
 		        Stripe.card.createToken($form, stripeResponseHandler);
 		        // Prevent the form from submitting with the default action
-		      //  return false;
+		        return false;
 		      });
 		    });
 		  </script>
@@ -142,7 +142,7 @@
 										    </div>
 											<br>
 											<div class="submit-button" style="clear:left;">
-												<input type="submit" name="submit" value="Submit"> 
+												<input type="submit" name="NOTsubmit" value="Submit"> 
 											</div>
 										</form>
 									</fieldset>
