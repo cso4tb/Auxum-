@@ -59,23 +59,57 @@
 								} 
 
 								$username = $_POST['name'];
-								$email = $_POST['email'];
-								$address = $_POST['address'];
-								$city = $_POST['city'];
-								$state = $_POST['state'];
-								$zip = $_POST['zipcode'];
-								$date = date("Y-m-d");
+								$sql = "SELECT * from Users where name='".$username."'";									
+								$result = $conn->query($sql);															
+								if($result->num_rows == 0){																		
+									$email = $_POST['email'];
+									$address = $_POST['address'];
+									$city = $_POST['city'];
+									$state = $_POST['state'];
+									$zip = $_POST['zipcode'];
+									$date = date("Y-m-d");
 
-								$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined)
-								VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date')";
+									$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined)
+									VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date')";
 
-								if ($conn->query($sql) === TRUE) {
-								    echo "New record created successfully";
-								} else {
-								    echo "Error: " . $sql . "<br>" . $conn->error;
+									if ($conn->query($sql) === TRUE) {
+									    echo "New record created successfully<br>";
+									} else {
+									    echo "Error: " . $sql . "<br>" . $conn->error;
+									}
+
+									$conn->close();								
+
+									require '..\..\PHPMailer\PHPMailerAutoload.php';
+
+									$mail = new PHPMailer;
+
+									$mail->isSMTP();                                      // Set mailer to use SMTP
+									$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+									$mail->SMTPAuth = true;                               // Enable SMTP authentication
+									$mail->Username = 'auxuminfo@gmail.com';                 // SMTP username
+									$mail->Password = 'auxuminfo1';                           // SMTP password
+									$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+									$mail->Port = 465;                                    // TCP port to connect to
+
+									$mail->setFrom('auxuminfo@gmail.com', 'Auxum Info');
+									$mail->addAddress($email, $username);     // Add a recipient
+									$mail->isHTML(true); 	
+
+									$mail->Subject = 'Welcome to Auxum!';
+									$mail->Body    = 'Hi '.$username.','.'<br><br>Thanks for signing up with Auxum! You can now start enhancing your education with Auxum\'s suite of advanced learning tools.';
+
+									if(!$mail->send()) {
+									    echo 'Message could not be sent.';
+									    echo 'Mailer Error: ' . $mail->ErrorInfo;
+									} else {
+									    echo 'Message has been sent';
+									}
+								}
+								else{
+									echo "Sorry, that username is already taken.";
 								}
 
-								$conn->close();								
 							?>
 
 							<?php
