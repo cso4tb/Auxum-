@@ -110,7 +110,7 @@
 									echo "Sorry, that username is already taken.";
 								}
 
-							?>
+							?> 
 
 							<?php
 							    require 'lib/Stripe.php';
