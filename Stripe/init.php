@@ -1,7 +1,8 @@
 <?php
 
 // Stripe singleton
-require(dirname(__FILE__) . '/lib/Stripe.php');
+// Stripe singleton
+require(dirname(__FILE__) . '/Stripe.php');
 
 // Utilities
 require(dirname(__FILE__) . '/lib/Util/AutoPagingIterator.php');
