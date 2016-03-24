@@ -116,7 +116,7 @@
 											<input type="text" style="font-weight: bold;" name="state" size="2" required="required" pattern="[A-Z]{1}[A-Za-z ]{1,}" title="valid state name"> 
 											<br>
 											<span class="error"> <?php echo $stateErr;?></span>
-											Zip Code: <input type="text" name="zipcode" required="required" pattern="[0-9]{5}" title="5-digit zip code: #####">
+											Zip Code: <input type="text" name="zipcode" style="font-weight: bold;" required="required" pattern="[0-9]{5}" title="5-digit zip code: #####">
 											<span class="error"> <?php echo $zipcodeErr;?></span>
 											<br>
 											<span class="payment-errors"></span>
@@ -124,21 +124,21 @@
 											  <div class="form-row">
 											    <label>
 											      <span>Card Number</span>
-											      <input type="text" size="20" data-stripe="number"/>
+											      <input type="text" style="font-weight: bold;" size="20" data-stripe="number"/>
 											    </label>
 											  </div>
 											  <div class="form-row">
 											    <label>
 											      <span>CVC</span>
-											      <input type="text" size="4" data-stripe="cvc"/>
+											      <input type="text" size="4" style="font-weight: bold;" data-stripe="cvc"/>
 											    </label>
 											  </div>
 										    <div class="form-row" >										   
 										      <span>Expiration (MM/YYYY)</span>
 										      <div>
-										      	<input type="text" size="2" data-stripe="exp-month" style = "display:inline;width:auto;" maxlength="2"/>
+										      	<input type="text" size="2" style="font-weight: bold;" data-stripe="exp-month" style = "display:inline;width:auto;" maxlength="2"/>
 										      	<span> / </span>
-										      	<input type="text" size="4" data-stripe="exp-year" style = "display:inline;width:auto;" maxlength="4"/>
+										      	<input type="text" size="4" style="font-weight: bold;" data-stripe="exp-year" style = "display:inline;width:auto;" maxlength="4"/>
 										      </div>										   
 										    </div>
 											<br>

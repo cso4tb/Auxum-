@@ -164,11 +164,11 @@
 								);
 
 								// Charge the Customer instead of the card
-								\Stripe\Charge::create(array(
-								  "amount" => 1000, // amount in cents, again
-								  "currency" => "usd",
-								  "customer" => $customer->id)
-								);
+					//			\Stripe\Charge::create(array(
+						//		  "amount" => 1000, // amount in cents, again
+							//	  "currency" => "usd",
+						//		  "customer" => $customer->id)
+						//		);
 
 								// YOUR CODE: Save the customer ID and other info in a database for later!
 
