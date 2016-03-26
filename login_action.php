@@ -50,23 +50,38 @@
 										<p> </p>
 									</header>
 
+									<?php 
+									    $servername = "localhost";
+									    $username = "root";
+									    $password = "";
+									    $dbname = "Auxum";
 
-									<fieldset>
-	    								
-										<form action="login_action.php" style="font-weight:bold;" method="POST" id="payment-form"> 
-											<br>
-											E-mail:
-											<input type="text" style="font-weight:bold;" name="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="valid email address: example@email.com">
-											<span class="error"> <?php echo $emailErr;?></span>
-											<br>
-											Password: <input type="password" style="font-weight:bold;" name="password">
-											<span class="error"> </span>
-											<br>
-											<div class="submit-button" style="clear:left;">
-												<input type="submit" name="NOTsubmit" value="Submit"> 
-											</div>
-										</form>
-									</fieldset>
+									// Create connection
+									    $conn = new mysqli($servername, $username, $password, $dbname);
+									// Check connection
+									    if ($conn->connect_error) {
+									        die("Connection failed: " . $conn->connect_error);
+									    }
+
+									    $user = $conn->real_escape_string($_POST['email']);
+									    $pass = $conn->real_escape_string($_POST['password']);
+
+									    $query = "SELECT `username` AND `password` FROM `users` WHERE `username` = '$user' AND `password` = '$pass'";
+
+									    $result = $conn->query($query);
+									    if ($result->num_rows == 0) {
+									    	echo "Wrong username or password";
+										     die();
+										} else if ($result->num_rows > 1) {
+											echo "Duplicate accounts, cannot login";
+										     die();
+										} else {
+											echo "Welcome!";
+										     die();
+										}
+									?>
+																	
+
 								</article>
 
 						</div>

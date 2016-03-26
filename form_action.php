@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -58,20 +57,21 @@
 								if ($conn->connect_error) {
 								    die("Connection failed: " . $conn->connect_error);
 								} 
+								$email = $_POST['email'];
 
-								$username = $_POST['name'];
-								$sql = "SELECT * from Users where name='".$username."'";									
+								$sql = "SELECT * from Users where email='".$email."'";									
 								$result = $conn->query($sql);															
-								if($result->num_rows == 0){																		
-									$email = $_POST['email'];
+								if($result->num_rows == 0){	
+									$username = $_POST['name'];
 									$address = $_POST['address'];
 									$city = $_POST['city'];
 									$state = $_POST['state'];
 									$zip = $_POST['zipcode'];
 									$date = date("Y-m-d");
+									$password = $_POST['password1'];
 
-									$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined)
-									VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date')";
+									$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined, password)
+									VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date', '$password')";
 
 									if ($conn->query($sql) === TRUE) {
 									    echo "New record created successfully<br>";
