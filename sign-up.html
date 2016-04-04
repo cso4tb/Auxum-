@@ -99,7 +99,10 @@
 	    								<br>
 	    								<h3>Personal Information</h3>
 										<form action="form_action.php" style="font-weight:bold;" method="POST" id="payment-form"> 
-											Name: <input type="text" style="font-weight:bold;" name="name" required="required" pattern="[A-Z]{1}[A-Za-z'-., ]{1,}" title="valid name must contain letters and may contain the characters from the following set: {' ,-.}">
+											Username: <input type="text" style="font-weight:bold;" name="name" required="required" pattern="[A-Z]{1}[A-Za-z'-., ]{1,}" title="valid name must contain letters and may contain the characters from the following set: {' ,-.}">
+											<span class="error"> <?php echo $nameErr;?></span>
+											<br>
+											Password: <input type="password" style="font-weight:bold;" name="password" required="required">
 											<span class="error"> <?php echo $nameErr;?></span>
 											<br>
 											E-mail:

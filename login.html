@@ -17,45 +17,7 @@
 		  <!-- jQuery is used only for this example; it isn't required to use Stripe -->
 		  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-		  <script type="text/javascript">
-		    // This identifies your website in the createToken call below
-		    Stripe.setPublishableKey('pk_test_mgpIvmdlFWUUlRuufMA8jaMC');
 
-
-		    var stripeResponseHandler = function(status, response) {
-		      var $form = $('#payment-form');
-		      if (response.error) {
-		        // Show the errors on the form
-		        $form.find('.payment-errors').text(response.error.message);
-		        $form.find('button').prop('disabled', false);
-		      } else {
-		      	//document.getElementById('#payment-form').submit();
-		        // token contains id, last4, and card type
-		        var token = response.id;
-		        // Insert the token into the form so it gets submitted to the server
-		        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-		        // and re-submit
-		        $form.get(0).submit();
-		       	//TWO OTHER ALTERNATIVE APPROACHES I TRIED 
-		        //document.getElementById("payment-form").action = "form_action.php";
-		        //document.getElementById("payment-form").submit();
-		        //$('#payment-form').submit();
-		      }
-		    };
-
-		    jQuery(function($) {
-		      $('#payment-form').submit(function(e) {
-		        var $form = $(this);
-		        // Disable the submit button to prevent repeated clicks
-		        $form.find('button').prop('disabled', true);
-		        Stripe.card.createToken($form, stripeResponseHandler);
-		        // Prevent the form from submitting with the default action
-		        return false;
-		      });
-		    });
-		  </script>
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -98,11 +60,11 @@
 	    								
 										<form action="login_action.php" style="font-weight:bold;" method="POST" id="payment-form"> 
 											<br>
-											E-mail:
-											<input type="text" style="font-weight:bold;" name="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="valid email address: example@email.com">
-											<span class="error"> <?php echo $emailErr;?></span>
+											Username:
+											<input type="text" style="font-weight:bold;" name="username" required="required" title="Username">
+											<span class="error"> <?php echo $UsernameErr;?></span>
 											<br>
-											Password: <input type="text" style="font-weight:bold;" name="address">
+											Password: <input type="password" style="font-weight:bold;" name="password" required="required">
 											<span class="error"> <?php echo $addressErr;?></span>
 											<br>
 											<div class="submit-button" style="clear:left;">
