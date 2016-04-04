@@ -22,8 +22,5 @@
 		else{
 			echo "The password entered is incorrect.";
 		}
-	}
-
-	session_start();
-	$_SESSION['logged in'] = 'true';	
+	}		
 ?>
