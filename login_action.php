@@ -14,11 +14,10 @@
 	}
 	else{	
 		$row = $result->fetch_assoc();
-		if($row['password'] == $_POST['password']){
-			if (session_status() == PHP_SESSION_NONE) {
- 			   session_start();
-			}
-			echo "You're not logged in.";
+		if($row['password'] == $_POST['password']){		
+ 			session_start();
+			$_SESSION['logged in'] = true;
+			echo "You're now logged in.";
 		}				
 		else{
 			echo "The password entered is incorrect.";

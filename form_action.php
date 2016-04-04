@@ -97,6 +97,9 @@
 									} else {
 									    echo 'Message has been sent';
 									}
+
+									session_start();
+									$_SESSION['logged in'] = true;
 								}
 								else{																	   
 									echo "Sorry, that username is already taken.";
