@@ -75,15 +75,15 @@
 
 									<!-- Sidebar 1 -->									
 										<section>
-											<h3>Past Lesson Progress </h3>
+											<h3>Past Lesson Timeline </h3>
 											<p>To view your past lesson statistics and timeline, select the past lesson report button below. </p>
 											<footer>
-												<a href="#" class="button">Past Lesson Report</a>
+												<a href="pastlessontime.html" class="button">Past Lesson Timeline</a>
 											</footer>
 										</section>
 
 										<section>
-											<h3>Review Past Lessons</h3>
+											<h3>View Past Lesson Proficiencies</h3>
 											<ul class="links">
 												<li><a href="#">Lesson 1: Fertile Crescent</a></li>
 												<li><a href="#">Lesson 2: Sub-Saharan Africa</a></li>
@@ -93,7 +93,7 @@
 												<li><a href="#">Lesson 6: Latin America</a></li>
 											</ul>
 											<footer>
-												<a href="#" class="button">View Assesments</a>
+												<a href="lessonprogress.html" class="button">Past Lesson Scores</a>
 											</footer>
 										</section>
 
@@ -145,7 +145,7 @@
 												<li><a href="#">Lesson 13: World War II </a></li>
 											</ul>
 											<footer>
-												<a href="#" class="button">Completion Timeline</a>
+												<a href="futurelesson.html" class="button">Completion Timeline</a>
 											</footer>
 										</section>
 
@@ -153,7 +153,7 @@
 											<h3>Modifying your Schedule</h3>
 											<p>The completion of your lesson is optimized according to your needs, test date, and the amount of time you have availible to study before the test date. If your test date or your schedule before the test changes, your study plan can be modified according to these changes. Click the button below to enter any chnages into your study plan. </p>
 											<footer>
-												<a href="#" class="button">Change Schedule</a>
+												<a href="modsched.html" class="button">Modify Schedule</a>
 											</footer>
 										</section>
 
@@ -175,10 +175,8 @@
 						.container { margin:15px auto 30px auto;}
 						.btn { display:inline-block; margin:10px;}
 						</style>
-						<h1>Current Lesson Preparation Progress</h1>
+						<h1>Test Preparation Progress</h1>
 						<div id="myGoal"></div>
-						<span class="btn btn-primary" id="get-current-value-btn">Get current progress value</span><br>
-						<span class="btn btn-primary" id="set-current-value-btn">See predicted progress after one additional week</span><br>
 						</div>
 					</div>
 
@@ -197,7 +195,7 @@
 				
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; AUXUM. All rights reserved</li><li>Design: <a href="http://html5up.net">AUXUM</a></li>
+								<li>&copy; AUXUM. All rights reserved</li><li><a href=""></a></li>
 							</ul>
 						</div>
 						<?php else: ?>
@@ -211,7 +209,7 @@
 						<script src="src/jquery.stepProgressBar.js"></script>
 						<script>
 						$('#myGoal').stepProgressBar({
-						  currentValue: 20,
+						  currentValue: 40,
 						  steps: [
 						    { value: 10 },
 						    {
