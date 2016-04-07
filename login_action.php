@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
 	html5up.net | @n33co
@@ -48,41 +47,38 @@
 								<article>
 									<header>
 										<h2>Log In</h2>
+										<?php
+											$servername = "localhost";
+											$username = "root";
+											$password = "";
+											$dbName = "Auxum";
+										    $conn = new mysqli($servername, $username, $password, $dbName);
+
+										    $username = $_POST['username'];
+										    $sql = "SELECT * from users WHERE name='".$username."'";
+
+										    $result = $conn->query($sql);    
+											if ($result->num_rows == 0) {    	
+											    echo "Error: No User with that name exists.";
+											}
+											else{	
+												$row = $result->fetch_assoc();
+												if($row['password'] == $_POST['password']){		
+										 			session_start();
+													$_SESSION['logged in'] = true;													
+												}				
+												else{
+													echo "The password entered is incorrect.";
+												}
+											}		
+										?>
+										<?php if(isset($_SESSION['logged in']) && $_SESSION['logged in'] == 'true'): ?>
+											<script>
+												window.location.replace("member_page.php");
+											</script>
+									 	<?php endif ?>
 										<p> </p>
-									</header>
-
-									<?php 
-									    $servername = "localhost";
-									    $username = "root";
-									    $password = "";
-									    $dbname = "Auxum";
-
-									// Create connection
-									    $conn = new mysqli($servername, $username, $password, $dbname);
-									// Check connection
-									    if ($conn->connect_error) {
-									        die("Connection failed: " . $conn->connect_error);
-									    }
-
-									    $user = $conn->real_escape_string($_POST['email']);
-									    $pass = $conn->real_escape_string($_POST['password']);
-
-									    $query = "SELECT `username` AND `password` FROM `users` WHERE `username` = '$user' AND `password` = '$pass'";
-
-									    $result = $conn->query($query);
-									    if ($result->num_rows == 0) {
-									    	echo "Wrong username or password";
-										     die();
-										} else if ($result->num_rows > 1) {
-											echo "Duplicate accounts, cannot login";
-										     die();
-										} else {
-											echo "Welcome!";
-										     die();
-										}
-									?>
-																	
-
+									</header>											
 								</article>
 
 						</div>
@@ -118,32 +114,4 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
-</html
-=======
-<?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbName = "Auxum";
-    $conn = new mysqli($servername, $username, $password, $dbName);
-
-    $username = $_POST['username'];
-    $sql = "SELECT * from users WHERE name='".$username."'";
-
-    $result = $conn->query($sql);    
-	if ($result->num_rows == 0) {    	
-	    echo "Error: No User with that name exists.";
-	}
-	else{	
-		$row = $result->fetch_assoc();
-		if($row['password'] == $_POST['password']){		
- 			session_start();
-			$_SESSION['logged in'] = true;
-			echo "You're now logged in.";
-		}				
-		else{
-			echo "The password entered is incorrect.";
-		}
-	}		
-?>
->>>>>>> origin/master
+</html>
