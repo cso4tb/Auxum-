@@ -32,8 +32,7 @@
 
 					<!-- Nav -->
 						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
+							<ul>								
 								<li>
 									<a href="#">Other Tests</a>
 									<ul>
