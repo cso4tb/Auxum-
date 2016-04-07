@@ -57,6 +57,7 @@
 								<li><a href="right-sidebar.html">AUXUM Usage</a></li>
 								<li class="current"><a href="two-sidebar.html">Help</a></li>
 								<li><a href="no-sidebar.html">Payment Information</a></li>
+								<li><a href="logout.php">Log Out</a></li>
 							</ul>
 						</nav>
 
@@ -65,6 +66,9 @@
 			<!-- Main -->
 				<section class="wrapper style1">
 					<div class="container">
+						
+
+
 						<?php if(isset($_SESSION['logged in']) && $_SESSION['logged in'] == 'true'): ?>
 						<div class="row 200%">
 							<div class="3u 12u(narrower)">
