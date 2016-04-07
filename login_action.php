@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -13,14 +14,6 @@
 		  <link rel="stylesheet" href="assets/css/main.css" />		
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		  <link rel="stylesheet" href="assets/css/main.css" />
-  <!-- The required Stripe lib -->
-		  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-		  <!-- jQuery is used only for this example; it isn't required to use Stripe -->
-		  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -58,24 +51,38 @@
 										<p> </p>
 									</header>
 
+									<?php 
+									    $servername = "localhost";
+									    $username = "root";
+									    $password = "";
+									    $dbname = "Auxum";
 
-									<fieldset>
-	    								
-										<form action="login_action.php" style="font-weight:bold;" method="POST" id="payment-form"> 
-											<br>
-											Username:
-											<input type="text" style="font-weight:bold;" name="username" required="required" title="Username">
-											<span class="error"> <?php echo $UsernameErr;?></span>
-											<br>
-											<span class="error"> </span>
-											Password: <input type="password" style="font-weight:bold;" name="password" required="required">
-											<span class="error"> <?php echo $addressErr;?></span>
-											<br>
-											<div class="submit-button" style="clear:left;">
-												<input type="submit" name="NOTsubmit" value="Submit"> 
-											</div>
-										</form>
-									</fieldset>
+									// Create connection
+									    $conn = new mysqli($servername, $username, $password, $dbname);
+									// Check connection
+									    if ($conn->connect_error) {
+									        die("Connection failed: " . $conn->connect_error);
+									    }
+
+									    $user = $conn->real_escape_string($_POST['email']);
+									    $pass = $conn->real_escape_string($_POST['password']);
+
+									    $query = "SELECT `username` AND `password` FROM `users` WHERE `username` = '$user' AND `password` = '$pass'";
+
+									    $result = $conn->query($query);
+									    if ($result->num_rows == 0) {
+									    	echo "Wrong username or password";
+										     die();
+										} else if ($result->num_rows > 1) {
+											echo "Duplicate accounts, cannot login";
+										     die();
+										} else {
+											echo "Welcome!";
+										     die();
+										}
+									?>
+																	
+
 								</article>
 
 						</div>
@@ -112,3 +119,31 @@
 
 	</body>
 </html
+=======
+<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbName = "Auxum";
+    $conn = new mysqli($servername, $username, $password, $dbName);
+
+    $username = $_POST['username'];
+    $sql = "SELECT * from users WHERE name='".$username."'";
+
+    $result = $conn->query($sql);    
+	if ($result->num_rows == 0) {    	
+	    echo "Error: No User with that name exists.";
+	}
+	else{	
+		$row = $result->fetch_assoc();
+		if($row['password'] == $_POST['password']){		
+ 			session_start();
+			$_SESSION['logged in'] = true;
+			echo "You're now logged in.";
+		}				
+		else{
+			echo "The password entered is incorrect.";
+		}
+	}		
+?>
+>>>>>>> origin/master
