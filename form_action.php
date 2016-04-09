@@ -1,13 +1,12 @@
-<<<<<<< HEAD
+
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-=======
+
 <!DOCTYPE HTML>
->>>>>>> origin/master
 <html>
 	<head>
 		<title>Auxum Sign Up</title>
@@ -35,6 +34,8 @@
 								<li><a href="index.html">Home</a></li>
 								<li><a href="about-us.html">About Us</a></li>
 								<li class="current"><a href="sign-up.html">Sign Up</a></li>
+								<li><a href="login.html"> Log In </a></li>
+
 							</ul>
 						</nav>
 
@@ -59,37 +60,37 @@
 								} 
 								$email = $_POST['email'];
 
-<<<<<<< HEAD
 								$sql = "SELECT * from Users where email='".$email."'";									
 								$result = $conn->query($sql);															
-								if($result->num_rows == 0){	
-									$username = $_POST['name'];
-=======
+								
 								$username = $_POST['name'];
-								$sql = "SELECT * from users where name='".$username."'";									
-								$result = $conn->query($sql);
-								if($result->num_rows == 0){																		
+								$sql = "SELECT * from users where name='".$username."'";
+								$rs = mysqli_query($conn,$sql);	
+								$data = mysqli_fetch_array($rs, MYSQLI_NUM);									
+								if($data[0] > 1){																		
+									echo "Sorry, that username is already taken.";
+
+									}
+								else{																	   
 									$email = $_POST['email'];
->>>>>>> origin/master
 									$address = $_POST['address'];
 									$city = $_POST['city'];
 									$state = $_POST['state'];
 									$zip = $_POST['zipcode'];
 									$date = date("Y-m-d");
-<<<<<<< HEAD
-									$password = $_POST['password1'];
-=======
 									$password = $_POST['password'];
->>>>>>> origin/master
-
 									$sql = "INSERT INTO Users (name, email, address, city, state, zip, joined, password)
 									VALUES ('$username', '$email', '$address', '$city', '$state', '$zip', '$date', '$password')";
+									}
+
+									
 
 									if ($conn->query($sql) === TRUE) {
 									    echo "New record created successfully<br>";
 									} else {
 									    echo "Error: " . $sql . "<br>" . $conn->error;
 									}
+									
 
 									$conn->close();								
 
@@ -121,10 +122,7 @@
 
 									session_start();
 									$_SESSION['logged in'] = true;
-								}
-								else{																	   
-									echo "Sorry, that username is already taken.";
-								}
+								
 
 							?> 
 
@@ -231,5 +229,3 @@
 
 	</body>
 </html>
-
-
